@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './App.css';
+import './App.scss';
 import './css/weather-icons.min.css';
 import weatherIcon from './weatherIcon.json';
-import AnimeIcon from './components/AnimeIcon';
+import AnimeIcon from './components/AnimeIcon.tsx';
 
 function App() {
     const [city, setCity] = useState('');
@@ -53,15 +53,12 @@ function App() {
       let classIcon = '';
       if (weatherCondition.id !== undefined) {
         classIcon = 'wi wi-';
-        console.log("Classicon", classIcon);
         if (weatherCondition.id <= 699 || (weatherCondition.id >= 800 && weatherCondition.id <= 899) || weatherCondition.id >= 1000) {
           classIcon = classIcon + 'day-' + weatherIcon[weatherCondition.id].icon;
-          console.log("Classicon", classIcon);
         } else {
           classIcon = classIcon + weatherIcon[weatherCondition.id].icon;
         }
       }
-      console.log("Classicon", classIcon);
       setConditionIcon(classIcon);
     }, [weatherCondition])
 
